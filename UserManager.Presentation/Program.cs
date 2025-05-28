@@ -1,6 +1,7 @@
 
 using UserManager.Application;
 using UserManager.Infrastructure;
+using UserManager.Presentation.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,10 @@ var configuration = builder.Configuration;
 
 builder.Services
     .AddDatabase(configuration)
-    .AddApplication();
+    .AddApplication()
+    .AddJwtAuthentication(configuration)
+    .AddConfigurations(configuration)
+    .AddSessions();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -29,7 +33,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

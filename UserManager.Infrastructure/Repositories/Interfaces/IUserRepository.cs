@@ -2,7 +2,7 @@
 
 namespace UserManager.Infrastructure.Repositories.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<User>
     {
         IQueryable<User?> GetAllActive();
 

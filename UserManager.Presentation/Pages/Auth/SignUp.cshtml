@@ -10,27 +10,27 @@
             <form method="post">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="Username" required>
+                    <input asp-for="user.Username" type="text" class="form-control" id="username" name="Username" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="FirstName" required>
+                    <input asp-for="user.FirstName" type="text" class="form-control" id="firstName" name="FirstName" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="LastName" required>
+                    <input asp-for="user.LastName" type="text" class="form-control" id="lastName" name="LastName" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="Email" required>
+                    <input asp-for="user.Password" type="email" class="form-control" id="email" name="Email" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="Password" required>
+                    <input asp-for="user.Password" type="password" class="form-control" id="password" name="Password" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100">Sign Up</button>
