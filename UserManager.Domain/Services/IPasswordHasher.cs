@@ -1,7 +1,8 @@
-﻿namespace UserManager.Domain.Services;
-
-public interface IPasswordHasher
+﻿namespace UserManager.Domain.Services
 {
-    string HashPassword(string password);
-    bool VerifyHashedPassword(string password, string hash);
+    public interface IPasswordHasher
+    {
+        string HashPassword(string password);
+        bool VerifyHash(string password, string hash);
+    }
 }

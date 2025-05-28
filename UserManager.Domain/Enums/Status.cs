@@ -1,7 +1,8 @@
-﻿namespace UserManager.Domain.Enums;
-
-public enum Status
+﻿namespace UserManager.Domain.Enums
 {
-   Active,
-    Blocked
+    public enum Status
+    {
+        Active,
+        Blocked
+    }
 }

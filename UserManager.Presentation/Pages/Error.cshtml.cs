@@ -24,5 +24,4 @@ namespace UserManager.Presentation.Pages
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }
-
 }
