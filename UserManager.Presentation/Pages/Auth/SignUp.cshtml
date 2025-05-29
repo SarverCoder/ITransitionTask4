@@ -25,7 +25,8 @@
 
                 <div class="mb-3">
                     <label for="email" class="form-label">E-mail</label>
-                    <input asp-for="user.Password" type="email" class="form-control" id="email" name="Email" required>
+                    <input asp-for="user.Email" type="email" class="form-control" id="email" name="Email" required>
+                    <span asp-validation-for="user.Email" style="color: red;"></span>
                 </div>
 
                 <div class="mb-3">
