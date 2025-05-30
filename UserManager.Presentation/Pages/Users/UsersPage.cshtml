@@ -4,126 +4,59 @@
 }
 
 <body class="p-4">
-    <div class="d-flex mb-3 gap-2">
-        <button class="btn btn-outline-primary"><i class="bi bi-lock"></i> Block</button>
-        <button class="btn btn-outline-primary"><i class="bi bi-unlock"></i></button>
-        <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
-        <input type="text" class="form-control w-25 ms-auto" placeholder="Filter">
-    </div>
+<form method="post" asp-page-handler="DeleteSelected">
+<div class="d-flex mb-3 gap-2">
+    <button class="btn btn-outline-primary"><i class="bi bi-lock"></i> Block</button>
+    <button class="btn btn-outline-primary"><i class="bi bi-unlock"></i></button>
+    <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+    <input type="text" class="form-control w-25 ms-auto" placeholder="Filter">
+</div>
 
-    <table class="table table-hover align-middle">
-        <thead>
-            <tr>
-                <th scope="col"><input type="checkbox" disabled></th>
-                <th scope="col">Name</th>
-                <th scope="col">Email <span>&darr;</span></th>
-                <th scope="col">Last seen</th>
-            </tr>
-        </thead>
-        <tbody>
-        <!-- User 1 -->
-        
-        
-        @foreach (var user in Model.Users)
-        {
-                <tr>
-                    <td><input type="checkbox" ></td>
-                    <td>
-                        <div>@user.FirstName , @user.LastName</div>
-                        <div class="role-muted">@user.Username</div>
-                    </td>
-                    <td>@user.Email</td>
-                    <td>
-                        <div data-bs-toggle="tooltip" title="5 minutes ago">@user.LastLoginDate.ToString()</div>
-                        <div>
-                            <span class="activity-bar" style="height: 12px"></span>
-                            <span class="activity-bar" style="height: 16px"></span>
-                            <span class="activity-bar" style="height: 18px"></span>
-                            <span class="activity-bar" style="height: 10px"></span>
-                            <span class="activity-bar" style="height: 6px"></span>
-                        </div>
-                    </td>
-                </tr>
-        }
-        
-        
+<table class="table table-hover align-middle">
+    <thead>
+    <tr>
+        <th scope="col"><input type="checkbox" id="select-all" disabled></th>
+        <th scope="col">Name</th>
+        <th scope="col">Email <span>&darr;</span></th>
+        <th scope="col">Last seen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- User 1 -->
 
+
+    @foreach (var user in Model.Users)
+    {
         <tr>
-                <td><input type="checkbox" checked></td>
-                <td>
-                    <div>Clare, Alex</div>
-                    <div class="role-muted">N/A</div>
-                </td>
-                <td>a_clare42@gmail.com</td>
-                <td>
-                    <div data-bs-toggle="tooltip" title="5 minutes ago">5 minutes ago</div>
-                    <div>
-                        <span class="activity-bar" style="height: 12px"></span>
-                        <span class="activity-bar" style="height: 16px"></span>
-                        <span class="activity-bar" style="height: 18px"></span>
-                        <span class="activity-bar" style="height: 10px"></span>
-                        <span class="activity-bar" style="height: 6px"></span>
-                    </div>
-                </td>
-            </tr>
+            <td>
+                <input type="checkbox" name="selectedUserIds" value="@user.Id" class="select-user"/>
+            </td>
+            <td>
+                <div>@user.FirstName , @user.LastName</div>
+                <div class="role-muted">@user.Username</div>
+            </td>
+            <td>@user.Email</td>
+            <td>
+                <div data-bs-toggle="tooltip" title="5 minutes ago">@user.LastLoginDate.ToString()</div>
+                <div>
+                    <span class="activity-bar" style="height: 12px"></span>
+                    <span class="activity-bar" style="height: 16px"></span>
+                    <span class="activity-bar" style="height: 18px"></span>
+                    <span class="activity-bar" style="height: 10px"></span>
+                    <span class="activity-bar" style="height: 6px"></span>
+                </div>
+            </td>
+        </tr>
+    }
 
-            <!-- User 2 -->
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>
-                    <div>Morrison, Jim</div>
-                    <div class="role-muted">CFO, Meta Platforms, Inc.</div>
-                </td>
-                <td>dmtimer9@dealyaari.com</td>
-                <td>
-                    <div data-bs-toggle="tooltip" title="less than a minute ago">less than a minute ago</div>
-                    <div>
-                        <span class="activity-bar" style="height: 10px"></span>
-                        <span class="activity-bar" style="height: 12px"></span>
-                        <span class="activity-bar" style="height: 14px"></span>
-                        <span class="activity-bar" style="height: 18px"></span>
-                        <span class="activity-bar" style="height: 20px"></span>
-                    </div>
-                </td>
-            </tr>
 
-            <!-- User 3 - Strike-through -->
-            <tr class="user-row strikethrough">
-                <td><input type="checkbox" checked></td>
-                <td>
-                    <div>Simone, Nina</div>
-                    <div class="role-muted">Regional Manager, Amazon.com, Inc.</div>
-                </td>
-                <td class="text-muted">marishabelin@giftcode-ao.com</td>
-                <td>
-                    <div data-bs-toggle="tooltip" title="October 12, 2024 15:45:30">3 weeks ago</div>
-                </td>
-            </tr>
 
-            <!-- User 4 -->
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>
-                    <div>Zappa, Frank</div>
-                    <div class="role-muted">Architect, Meta Platforms, Inc.</div>
-                </td>
-                <td>zappa_f@citybank.com</td>
-                <td>
-                    <div data-bs-toggle="tooltip" title="less than a minute ago">less than a minute ago</div>
-                    <div>
-                        <span class="activity-bar" style="height: 12px"></span>
-                        <span class="activity-bar" style="height: 14px"></span>
-                        <span class="activity-bar" style="height: 15px"></span>
-                        <span class="activity-bar" style="height: 17px"></span>
-                        <span class="activity-bar" style="height: 18px"></span>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
+    </tbody>
+</table>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
         // Tooltiplarni faollashtirish
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         tooltipTriggerList.forEach(tooltipTriggerEl => {
