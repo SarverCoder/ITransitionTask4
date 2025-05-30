@@ -7,5 +7,7 @@ namespace UserManager.Infrastructure.Repositories.Interfaces
         IQueryable<User?> GetAllActive();
 
         Task<User?> GetByUsernameAsync(string username);
+
+        Task<User?> GetByEmailAsync(string email);
     }
 }

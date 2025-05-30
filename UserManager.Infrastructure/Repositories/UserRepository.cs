@@ -17,5 +17,11 @@ namespace UserManager.Infrastructure.Repositories
             return await context.Users
                 .FirstOrDefaultAsync(u => u.Username == username && u.Status == Status.Active);
         }
+
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+           return await context.Users
+                .FirstOrDefaultAsync(u => u.Email == email && u.Status == Status.Active);
+        }
     }
 }
