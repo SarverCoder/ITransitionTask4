@@ -13,7 +13,7 @@ namespace UserManager.Infrastructure
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseNpgsql(connectionString);
+                options.UseSqlServer(connectionString);
             });
 
             services.Scan(r => r.FromAssembliesOf(typeof(IRepository<>))
